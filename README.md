@@ -1,13 +1,16 @@
-# TRYMATCH 4.0 — prueba de distribución y memoria
+# TRYMATCH 4.1 — Mesa mixta (preliminar)
 
-Actualización de la 3.9: botones SWAP/Cancelar y micrófono próximos a la mano; capas de controles por delante de la mesa; paneles de rivales distribuidos según 2–6 jugadores; carta revelada junto al rival correspondiente y en el centro.
+Actualización de 4.0. Mantiene el estilo aprobado. Paneles compactos de rivales en una fila que se adapta a 1–5 rivales; botones Alta/Baja por encima del tapete. Dock SWAP / Cancelar / mano / HABLAR unido.
 
-La lógica del servidor conserva un máximo de tres revelaciones por turno y prohíbe la tercera si las primeras dos no coinciden. Permite repetir Alta/Baja si hay otra carta en ese extremo.
+## Nueva opción
+En el menú marca «Completar asientos vacíos con IA», selecciona jugadores totales 2–6 y dificultad principiante, normal o experta. Entra en la sala, invita a amigos si quieres y pulsa iniciar: el servidor completa los asientos libres con IA. También puedes jugar una sola persona contra IA.
 
-## Publicación
+La IA básica no usa información oculta para elegir: solo memoriza cartas reveladas anteriormente con probabilidad según dificultad. La memoria se reinicia después de un trío, porque cambian índices de cartas.
 
-En el repositorio de PRUEBA ya conectado a Render, reemplaza `server.js`, `package.json` y `public/index.html`. No borres `public/classic-2-3.html`, `public/legacy-3-3.html` ni `public/manifest.webmanifest`. Render debería desplegar automáticamente o puedes usar Manual Deploy → Deploy latest commit.
+## Actualización
+Reemplaza server.js, package.json y public/index.html en el repositorio de pruebas de GitHub. Render despliega la actualización automáticamente o Manual Deploy → Deploy latest commit. No crear un nuevo servidor.
 
-## Límites
+## Limitaciones
+No se ha probado con seis teléfonos reales; la voz WebRTC sigue dependiendo de conectividad entre redes y puede necesitar TURN. Las partidas se almacenan en memoria. La interfaz se debe comprobar en los Android reales. El botón de voz permanece visible también contra IA, pero la IA no habla ni escucha. El modo de un humano + IA requiere el servidor 4.1; no funciona solo abriendo el HTML.
 
-No se ha validado con seis dispositivos reales ni se garantiza el audio WebRTC en redes que requieren TURN. El diseño móvil necesita comprobarse en los teléfonos de los participantes. Las partidas permanecen en memoria del servidor.
+Referencia de reglas: https://es.boardgamearena.com/gamepanel?game=trio. El modo clásico de TRIO y las adaptaciones propias de TRYMATCH no deben confundirse.
