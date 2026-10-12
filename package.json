@@ -1,15 +1,1 @@
-{
-  "name": "trymatch-4-0-online",
-  "version": "4.0.0",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "start": "node server.js"
-  },
-  "engines": {
-    "node": ">=20"
-  },
-  "dependencies": {
-    "ws": "^8.18.0"
-  }
-}
+{"name":"trymatch-revision-10","version":"10.0.0","private":true,"type":"module","scripts":{"start":"node server.js","check":"node --check server.js"},"engines":{"node":">=20"},"dependencies":{"ws":"^8.18.0"}}
