@@ -1,12 +1,25 @@
-# TRYMATCH 3.8 — versión de pruebas
+# TRYMATCH 3.9 — Preliminar de pruebas
 
-Cambios: doble selección consecutiva de Alta/Baja para trío (sin seleccionar dos veces la misma carta), revelación central con origen, controles simétricos, jugadores por encima de la mesa, reconexión con token local y espera de 90 s, sustitución por IA tras la espera, voz PTT WebRTC con señalización entre 2–6 personas.
+## Arranque
+Node.js 20+; `npm install` y `npm start`. En Render: Web Service Node, Root Directory vacío si `server.js` está en raíz, Build `npm install`, Start `npm start`. Render debe servir HTTPS.
 
-## Publicación
-En el mismo repositorio de pruebas sustituye `server.js`, `package.json` y `public/index.html`. Render despliega el último commit si Auto Deploy está activo. No necesitas otro servicio.
+## Cambios respecto a 3.8
+- Bloqueo explícito en servidor y cliente de la tercera carta cuando las primeras dos no coinciden.
+- Dos cartas iguales desde Alta o Baja consecutivas siguen permitidas cuando son extremos legales.
+- Contador de bajadas `0/3` visible para cada jugador.
+- El trío especial del número 7 únicamente gana tras tres revelaciones legales en su turno.
+- Prioridad visual de paneles y controles de jugadores sobre el tapete; ajustes de distribución compacta.
+- Se conserva sala de 2 a 6, reconexión 90 segundos, IA sustituta y voz WebRTC de 3.8.
 
-## Límites
-El estado de las salas está en memoria: un reinicio del servidor (incluidos reinicios del plan gratuito de Render) elimina las salas. La voz usa STUN público; en redes móviles con NAT restrictiva puede necesitar TURN para funcionar. La prueba real entre Android todavía es necesaria. La IA utiliza una estrategia básica, no el motor estratégico completo de la versión individual.
+## Limitaciones honestas
+- No se ha comprobado audio con dos Android reales. WebRTC podría requerir TURN en algunas redes.
+- Render reiniciado pierde salas: el estado está en memoria.
+- No hay publicidad ni registro de datos personales incorporados.
+- Este ZIP es un proyecto para desplegar: el archivo `public/index.html` no funciona como multijugador sin servidor.
+- Verificar partidas completas de 2 a 6 jugadores antes de declarar producción.
 
-## Privacidad
-El token de sesión se almacena en localStorage del navegador; no lo compartas. Audio entre navegadores por WebRTC, sin grabación en servidor.
+## Actualización del repositorio de prueba
+Reemplazar `server.js`, `package.json`, `public/index.html` y conservar `public/classic-2-3.html`, `public/legacy-3-3.html`, `public/manifest.webmanifest`. Render desplegará el nuevo commit si está habilitado el despliegue automático. No tocar la versión oficial 3.5.
+
+## Revisión
+Consultar `REVISION_18_PERFILES.md` para los mandatos individuales y los criterios de aceptación.
