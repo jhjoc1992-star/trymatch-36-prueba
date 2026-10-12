@@ -1,17 +1,15 @@
-# TRYMATCH — Revisión 10
+# TRYMATCH — Revisión 09.1
 
-Reinicio estructurado del proyecto: mesa estilo póker con gráficos propios, reglas clásicas TRIO + SWAP, IA mixta y salas multijugador 2–6.
+Corrección de distribución: **cronómetro y espacio publicitario comparten la misma barra superior**, sin añadir una segunda franja ni reducir la altura de la mesa.
 
-## Instalación
-`npm install` y `npm start` (Node.js 20+). Visitar `http://localhost:3000`.
+- La publicidad es solo un marcador visual; no hay anuncios ni seguimiento.
+- La zona publicitaria se adapta al espacio disponible entre marca y controles.
+- El cronómetro muestra duración de partida (mm:ss) a partir de la hora del servidor.
+- Se conservan las mecánicas y archivos de Revisión 09 sin cambios de reglas.
+- Se conservan los documentos de reglamento, términos, privacidad y pruebas.
 
-## Actualizar GitHub / Render
-En el repositorio de pruebas `trymatch-36-prueba`, sustituir `server.js`, `package.json` y `public/index.html`. Render ejecuta `npm install` y `npm start`. No sustituir el repositorio original de respaldo.
+## Publicar en GitHub / Render
+Reemplazar `server.js`, `package.json` y `public/index.html` en el repositorio de prueba y desplegar.
 
-## Documentación
-- `docs/REGLAMENTO.md`: mecánica, SWAP, variantes y aceptación.
-- `docs/TERMINOS_Y_PRIVACIDAD.md`: borrador de términos y privacidad.
-- `docs/AUDITORIA_18_PERFILES.md`: decisiones de los 18 roles.
-
-## Limitaciones
-No hay servidor TURN, base de datos persistente, autenticación de cuentas ni clasificación online. La voz no está validada en teléfonos reales. Esta es una revisión funcional de desarrollo, no un producto comercial certificado.
+## Validación
+Comprobación sintáctica de servidor y cliente. Falta validación manual real en Android, partidas y audio.
