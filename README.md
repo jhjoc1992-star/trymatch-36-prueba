@@ -1,25 +1,22 @@
-# TRYMATCH — REVISIÓN 07
+# TRYMATCH — REVISIÓN 7.2 (beta de integración)
 
-Paquete de prueba web para Android Chrome, iPhone Safari y escritorio. Incluye servidor Node.js, WebSocket, interfaz y documentación. **No es un APK/IPA y no está desplegado automáticamente**.
+Aplicación web multijugador basada en la revisión 07. Contiene servidor Node.js + WebSocket, interfaz responsive y pruebas del motor. **No es una aplicación nativa APK o IPA.**
 
-## Publicación
-1. Hacer copia de seguridad del proyecto estable y utilizar el repositorio de pruebas.
-2. Subir `server.js`, `package.json` y `public/index.html` al repositorio de GitHub conectado a Render.
-3. Render: `npm install` y `npm start`, Node.js >= 20. HTTPS para micrófono.
-4. Abrir la URL existente del servicio. `/health` informa la revisión del servidor.
+## Instalación
 
-## Mecánica
-Reglas de TRIO (36 cartas, extremos Alta/Baja, máximo 3 revelaciones) con SWAP una vez por turno antes de revelar: elegir carta propia y destino Mesa/rival; carta destino aleatoria. Modo Simple: 3 tríos; Picante: 7 o 2 tríos conectados. Modo de 2 jugadores es una variante digital propia. Ver `docs/REGLAMENTO_REV07.md`.
+1. Haz copia de seguridad de la revisión estable y utiliza solo el repositorio de pruebas.
+2. Copia `server.js`, `package.json` y toda la carpeta `public/` (incluido `public/assets/`).
+3. En Render utiliza Node >= 20, `npm install` y `npm start`.
+4. Abre el servicio HTTPS desde Android Chrome o iPhone Safari. No se ha verificado aún en teléfonos reales.
 
-## Cambios principales
-- Corrección del bloqueo de pulsación causado por superposición transparente del dock sobre cartas centrales.
-- Selección SWAP contra jugador y Mesa verificada en navegador automatizado.
-- Mensajes de error explícitos en jugadas rechazadas.
-- Modo Simple/Picante alineado con el reglamento consultado.
-- Asientos visualmente ligeros sin cajas rectangulares oscuras; avatares con apariencia 3D (CSS, no modelos 3D reales).
-- Conserva cronómetro, espacio publicitario superior, IA y opciones mixtas, volumen, efectos y voz beta.
+## Cambios
 
-## Pruebas
-`node --test tests/test-engine.mjs` (10 pruebas de lógica, sin dependencia `ws`), `python tests/ui_interactions.py` y `python tests/visual_check.py` (requieren Playwright y Chromium). Ver `docs/AUDITORIA_Y_PRUEBAS.md` para resultados y límites.
+- Nuevo diseño azul y dorado basado en la imagen aportada, retratos de avatar prerenderizados, cinco paletas de mesa y botones SWAP junto a cada rival.
+- SWAP una vez por turno, selección visible de carta saliente y resaltado de carta entrante.
+- Solo modo clásico, 3 tríos para ganar y trío 7 especial.
+- Solucionado defecto que daba trío falso cuando la tercera carta difería.
+- Bienvenida de 7 segundos al entrar en la mesa.
 
-**Importante:** no se ha completado una partida multijugador real ni se ha validado la voz entre Android y iPhone. Las partidas viven en memoria y se pierden si el servidor reinicia. `npm install` no pudo finalizar en el entorno de preparación; Render instalará dependencias al desplegar si la red está disponible.
+## Verificación
+
+`npm test` ejecuta diez pruebas del motor. `node --check server.js` comprueba sintaxis. Ver `docs/ESTADO_REV72.md` para las limitaciones. Las capturas de `docs/VISTA_REV72_*.png` son simulaciones de interfaz en Chromium, no capturas de teléfonos.
