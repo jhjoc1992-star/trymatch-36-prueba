@@ -1,22 +1,20 @@
-# TRYMATCH — REVISIÓN 7.2 (beta de integración)
+# TRYMATCH — Revisión 7.3 (beta de corrección)
 
-Aplicación web multijugador basada en la revisión 07. Contiene servidor Node.js + WebSocket, interfaz responsive y pruebas del motor. **No es una aplicación nativa APK o IPA.**
+Actualización de la Revisión 7.2 centrada en **desbloquear SWAP/Cancelar**, corregir la presentación de las cartas y despejar la mesa de seis jugadores.
 
-## Instalación
+## Instalación en GitHub + Render
 
-1. Haz copia de seguridad de la revisión estable y utiliza solo el repositorio de pruebas.
-2. Copia `server.js`, `package.json` y toda la carpeta `public/` (incluido `public/assets/`).
-3. En Render utiliza Node >= 20, `npm install` y `npm start`.
-4. Abre el servicio HTTPS desde Android Chrome o iPhone Safari. No se ha verificado aún en teléfonos reales.
+1. Conserva una copia de la revisión anterior.
+2. Sube a la raíz del repositorio `server.js` y `package.json`.
+3. Sustituye `public/index.html` y sube **todos** los archivos de `public/assets/` conservando sus nombres.
+4. En Render despliega el último commit y comprueba `/health` (debe indicar `revision: 07.3`).
+5. En Chrome recarga forzosamente la página para evitar caché.
 
-## Cambios
+## Pruebas
 
-- Nuevo diseño azul y dorado basado en la imagen aportada, retratos de avatar prerenderizados, cinco paletas de mesa y botones SWAP junto a cada rival.
-- SWAP una vez por turno, selección visible de carta saliente y resaltado de carta entrante.
-- Solo modo clásico, 3 tríos para ganar y trío 7 especial.
-- Solucionado defecto que daba trío falso cuando la tercera carta difería.
-- Bienvenida de 7 segundos al entrar en la mesa.
+- `node --check server.js`
+- `npm test` (la suite original inicia un servidor de prueba y puede dejar el proceso abierto tras informar los resultados)
+- `python tests/ui_interactions.py` (requiere Playwright y Chromium)
+- `python tests/visual_rev73.py` (capturas de 915×412 y 390×844)
 
-## Verificación
-
-`npm test` ejecuta diez pruebas del motor. `node --check server.js` comprueba sintaxis. Ver `docs/ESTADO_REV72.md` para las limitaciones. Las capturas de `docs/VISTA_REV72_*.png` son simulaciones de interfaz en Chromium, no capturas de teléfonos.
+Consulta `docs/CAMBIOS_REV73.md` para detalles y limitaciones.
