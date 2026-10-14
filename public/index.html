@@ -123,7 +123,63 @@ body{background:radial-gradient(ellipse at 50% 10%,#493222 0,#111e2c 45%,#060e1c
 .dock{bottom:24px;width:96%;grid-template-columns:63px minmax(0,1fr) 57px}
 .hand .tile{width:clamp(22px,6vw,37px);height:clamp(36px,8vh,54px);font-size:clamp(16px,4.5vw,25px)}
 }
-</style></head><body><header class="bar"><div><span class="logo">TRY<b>MATCH</b></span> <small>REV 7.3</small></div><aside id="adSlot" class="adSlot hidden" aria-label="Espacio reservado para publicidad"><span class="adMark">PUBLICIDAD</span><span class="adText">Espacio reservado</span></aside><div class="right"><span class="clock" id="clock" aria-label="Duración de la partida">⏱ 00:00</span><small id="topStatus"></small><button class="pill" id="fullBtn">⛶</button><button class="pill" id="exitBtn">Salir</button></div></header>
+
+/* TM-VISUAL-001 — Revisión visual aislada; sin cambios en el motor */
+:root{--scene-gold:#f6c778;--scene-cyan:#16caff}
+.game{position:relative;isolation:isolate;background:radial-gradient(ellipse at 50% 2%,#b9773770,transparent 54%),linear-gradient(0deg,#070d17,#111b29 70%,#3d281e);padding:clamp(10px,2vh,22px) clamp(13px,2vw,35px) clamp(14px,3vh,26px)}
+.game:before{content:"";position:absolute;inset:0;background:linear-gradient(#080e17a8,#0a1224b0),url('/assets/theme-casino.webp') center 35% / cover no-repeat;filter:blur(7px) saturate(1.6);transform:scale(1.015);pointer-events:none;z-index:-1}
+.game:after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 10%,#ffc05b25,transparent 42%);pointer-events:none;z-index:-1}
+.table,.table[data-theme]{overflow:visible;border:clamp(12px,2vw,27px) solid #89532d;border-radius:49% / 40%;background:radial-gradient(ellipse at 48% 42%,#115889 0%,#073c69 60%,#061d37 100%);box-shadow:0 0 0 3px #e6ae63,0 0 0 10px #3a2115,0 18px 35px #000d,inset 0 0 0 3px #b98c50,inset 0 0 38px #010d20;}
+.table[data-theme=urban]{background:radial-gradient(ellipse,#185e9d,#09274b 80%)}.table[data-theme=beach]{background:radial-gradient(ellipse,#20a5c1,#07536e 80%)}.table[data-theme=space]{background:radial-gradient(ellipse,#4e28a0,#140b3a 80%)}.table[data-theme=forest]{background:radial-gradient(ellipse,#277a5a,#092f2a 80%)}
+.table:after{inset:2.8%;border:1px solid #c7e7ff25;box-shadow:inset 0 0 35px #ffffff06}
+.table:before{top:51%;font-size:clamp(18px,3.3vw,42px);color:#c7d9eb23;text-shadow:0 2px 3px #0007}
+.seat{width:clamp(104px,14vw,185px);max-width:20%;filter:drop-shadow(0 7px 7px #000d);z-index:8;}
+.seatHead{background:none;box-shadow:none;gap:0;overflow:visible;}
+.seat .avatar3d{width:clamp(86px,10vw,170px)!important;height:clamp(88px,11vw,175px)!important;filter:drop-shadow(0 7px 8px #000e);overflow:visible;}
+.avatarPortrait{width:100%;height:100%;object-fit:contain;object-position:bottom center;border-radius:0;mask-image:linear-gradient(#000 0%,#000 78%,transparent 99%);-webkit-mask-image:linear-gradient(#000 0%,#000 78%,transparent 99%);}
+.seatName{position:relative;z-index:3;background:#050d17dc;border-radius:12px;padding:2px 12px;font-size:clamp(10px,1.1vw,14px);margin-top:-12px;box-shadow:0 3px 10px #0009}
+.seat .score{background:#050c15e0;font-size:clamp(11px,1.25vw,16px);border-radius:9px;box-shadow:0 2px 8px #0008}
+.seat.active .avatar3d{filter:drop-shadow(0 0 12px #ffd371) drop-shadow(0 8px 9px #000)}
+.seat .miniBacks{height:9px;margin-top:2px}
+.seatFoot{margin-top:2px;gap:4px;}
+.seatFoot button{border-radius:12px;background:linear-gradient(180deg,#0072c4,#07355c);border:1px solid #28d3ff;box-shadow:0 0 10px #009dfb70;font-size:clamp(10px,1vw,13px);min-height:32px}
+.seat .rivalSwap{top:29%;right:-12%;height:32px;min-width:37px;background:radial-gradient(circle at 50% 20%,#0e87d9,#003a78);border:2px solid #b4eaff;box-shadow:0 0 10px #0aaeffaa}
+.seat .exposed{top:104%;z-index:11}
+.centerZone{top:48%;width:50%;gap:5px;z-index:4}
+.revealLine{height:clamp(49px,11vh,95px);align-items:end}
+.centerCards{max-height:17vh;}
+.revealedItem{background:#061a2ec4;border:1px solid #ffffff18;}
+.tile{font-family:system-ui,Arial,sans-serif;font-weight:900;letter-spacing:0;font-variant-numeric:tabular-nums;display:flex;justify-content:center;align-items:center;padding:0 2px;line-height:1;box-shadow:0 4px 8px #0009,inset 0 2px 2px #fff8;}
+.tile.back{background:linear-gradient(135deg,#3185cc,#063c83 70%);border:2px solid #d6e8ff;box-shadow:inset 0 0 0 2px #0c366a,inset 0 0 0 4px #7abce099,0 4px 9px #000a}
+.tile.back:before{content:'♛';font-size:clamp(14px,2.2vw,27px);color:#ffd477}
+.dock{bottom:clamp(3px,1vh,12px);width:94%;grid-template-columns:minmax(90px,1fr) minmax(0,4fr) minmax(75px,1fr);z-index:12;}
+.dockLeft,.dockRight{padding-bottom:4px}.dockLeft .gold{border-radius:23px;font-size:clamp(11px,1.25vw,16px)}
+.mine{gap:4px}.myLabel{background:#050e1add;color:#fff4dd;font-size:clamp(11px,1.1vw,15px);box-shadow:0 3px 9px #0008}
+.hand .tile{width:clamp(29px,4.3vw,61px);height:clamp(44px,10vh,80px);font-size:clamp(22px,2.5vw,36px)}
+.mic{background:radial-gradient(circle at 30% 20%,#18a7e8,#035b9c)!important;box-shadow:0 0 15px #02c6ffb8!important}
+/* landscape short phones: keep opponent controls away from central reveal lane */
+@media (orientation:landscape) and (max-height:520px){
+.game{padding:10px 22px 13px}.table,.table[data-theme]{border-width:13px}
+.seat{width:clamp(95px,11.5vw,145px);max-width:17%}
+.seat .avatar3d{width:clamp(65px,7vw,105px)!important;height:clamp(63px,7vw,105px)!important}
+.seatName{margin-top:-8px;font-size:10px}.seat .score{font-size:10px}
+.seat .rivalSwap{top:24%;right:-7%;height:27px;min-width:30px}
+.seatFoot button{min-height:27px;font-size:10px;padding:2px}
+.centerZone{top:48%;width:44%}.revealLine{height:49px}.centerCards{max-height:12vh}
+.dock{bottom:0;width:95%;grid-template-columns:90px minmax(0,1fr) 70px}
+.hand .tile{height:clamp(42px,12vh,60px);width:clamp(26px,3.4vw,44px)}
+}
+@media (orientation:portrait){
+.game{padding:14px 6px 17px}.table,.table[data-theme]{border-radius:26% / 13%;border-width:10px}
+.seat{width:clamp(72px,20vw,120px);max-width:28%}
+.seat .avatar3d{width:clamp(48px,13vw,80px)!important;height:clamp(50px,14vw,85px)!important}
+.seatName{margin-top:-5px;font-size:10px;padding:1px 4px}.seat .score{font-size:10px}
+.seat .rivalSwap{right:-10px;top:28%;height:26px;min-width:28px;font-size:8px}
+.seatFoot button{min-height:30px;font-size:9px;padding:2px 1px}
+.centerZone{top:53%;width:88%}.dock{width:98%;grid-template-columns:60px minmax(0,1fr) 57px;bottom:22px}
+.hand .tile{width:clamp(23px,6.3vw,37px);height:clamp(37px,8vh,56px);font-size:clamp(18px,4.5vw,26px)}
+}
+</style></head><body><header class="bar"><div><span class="logo">TRY<b>MATCH</b></span> <small>REV 7.3 VISUAL</small></div><aside id="adSlot" class="adSlot hidden" aria-label="Espacio reservado para publicidad"><span class="adMark">PUBLICIDAD</span><span class="adText">Espacio reservado</span></aside><div class="right"><span class="clock" id="clock" aria-label="Duración de la partida">⏱ 00:00</span><small id="topStatus"></small><button class="pill" id="fullBtn">⛶</button><button class="pill" id="exitBtn">Salir</button></div></header>
 <div id="welcome" class="welcome hidden" role="status"><div class="welcomeLogo">TRY<span>MATCH</span></div><p>ESTRATEGIA · MEMORIA · AMIGOS · ¡QUE COMIENCE LA PARTIDA!</p><button id="skipWelcome" class="btn">Continuar</button></div><main id="setup" class="shell"><div class="setup"><h1>Tu mesa, sin esperas</h1><p class="muted">Juega con amigos, contra IA o combina ambos. No necesitas cuenta ni entregar datos personales.</p><div class="fields"><label>Tu nombre<input id="name" maxlength="18" value="Jugador" autocomplete="off"></label><label>Avatar<select id="avatar"><option>🙂</option><option>🦊</option><option>🐼</option><option>🦉</option><option>🐱</option><option>🐯</option><option>🦝</option><option>🐺</option><option>🦁</option><option>🤖</option><option>👾</option><option>🦄</option></select></label><label>Código de sala (opcional)<input id="code" placeholder="Para unirte a amigos"></label></div><div class="actions"><label style="font-size:12px">🔊 Sonido <input id="volume" type="range" min="0" max="100" value="75" style="vertical-align:middle;width:100px"></label><button class="btn gold" id="join">Crear mesa / Entrar</button><span id="connectInfo" class="muted"></span></div><p class="help">TRIO: revela extremos o cartas centrales; si las primeras dos no coinciden, termina el turno. SWAP: una vez por turno, antes de revelar. Hasta seis puestos.</p></div></main>
 <section id="lobby" class="shell hidden"><div class="setup"><h1>Sala <span class="code" id="roomCode"></span></h1><div class="actions"><button class="btn" id="copy">Copiar invitación</button><span class="muted">Invita amigos antes de empezar, o completa con IA.</span></div><div class="members" id="members"></div><div id="hostSettings"><div class="fields"><label>Puestos totales<select id="total"><option>2</option><option>3</option><option>4</option><option>5</option><option selected>6</option></select></label><label>Modo<select id="mode"><option value="simple">Clásico · 3 tríos / 7 especial</option></select></label><label>Tema de mesa<select id="theme"><option value="casino">Casino clásico</option><option value="urban">Noche urbana</option><option value="beach">Playa tropical</option><option value="space">Espacial galáctico</option><option value="forest">Bosque mágico</option></select></label><label>Memoria de IA<select id="difficulty"><option value="principiante">Principiante</option><option value="normal" selected>Normal</option><option value="experta">Experta</option></select></label><label>Tiempo visible por carta<select id="delay"><option value="6">6 segundos</option><option value="8" selected>8 segundos</option><option value="10">10 segundos</option></select></label><label>Asientos vacíos<select id="fill"><option value="yes">Completar con IA</option><option value="no">Solo humanos</option></select></label></div><button class="btn gold" id="start">Iniciar partida</button></div><p id="waiting" class="muted hidden">Esperando al anfitrión…</p></div></section>
 <section id="game" class="game hidden"><div class="table" id="table"><div id="seats"></div><div class="centerZone"><div class="revealLine" id="reveals"></div><div class="message" id="message">Elige una carta</div><div class="centerCards" id="centerCards"></div></div><div class="dock"><div class="dockLeft"><button class="btn gold" id="swap">⇄ SWAP</button><button class="btn" id="cancel">Cancelar</button><span class="swapNote" id="swapState"></span></div><div class="mine"><div class="myLabel" id="myLabel">🙂 Tú · 🏆 0/3</div><div class="hand" id="hand"></div></div><div class="dockRight"><button class="mic" id="mic" aria-label="Mantener pulsado para hablar">🎙️</button><span class="voiceState" id="voiceState">HABLAR</span></div></div></div></section><div id="fx" class="fx hidden" aria-live="polite"></div><div class="overlay hidden" id="modal"><div class="dialog"><h2 id="modalTitle"></h2><p id="modalText"></p><div class="actions" style="justify-content:center"><button class="btn gold" id="restart">Nueva partida</button><button class="btn" id="closeModal">Cerrar</button></div></div></div><script>
@@ -135,7 +191,7 @@ function retryConnection(){if(retryTimer)return;const wait=Math.min(12000,1000*M
 function syncSwapTurn(m){const key=m.game?`${m.code}:${m.game.startedAt}:${m.game.turnNo}:${m.game.turn}`:null;if(key!==lastTurnKey){swapIndex=null;swapTarget=null;lastTurnKey=key}if(m.game?.swapped)swapIndex=null}
 const saved=(()=>{try{return JSON.parse(sessionStorage.getItem('trymatch-rev07'))}catch{return null}})();if(saved){room=saved.room;token=saved.token;$('code').value=room;$('name').value=saved.name||'Jugador';$('avatar').value=saved.avatar||'🙂'}
 $('start').onclick=()=>msg({type:'start',totalSeats:+$('total').value,fillBots:$('fill').value==='yes',mode:$('mode').value,theme:$('theme').value,difficulty:$('difficulty').value,delay:+$('delay').value});$('restart').onclick=()=>{msg({type:'restart'});$('modal').classList.add('hidden')};$('closeModal').onclick=()=>$('modal').classList.add('hidden');$('copy').onclick=()=>{let link=location.origin+'/?room='+room;navigator.clipboard?.writeText(link+' Código: '+room);toast('Invitación copiada')};let qp=new URLSearchParams(location.search).get('room');if(qp)$('code').value=qp.toUpperCase();$('exitBtn').onclick=()=>{if(confirm('¿Salir de la mesa?')){ws?.close();sessionStorage.removeItem('trymatch-rev07');location.href=location.pathname}};$('fullBtn').onclick=()=>{if(document.fullscreenElement)document.exitFullscreen?.();else document.documentElement.requestFullscreen?.().catch(()=>{})};
-const positions={1:[[50,14]],2:[[33,14],[67,14]],3:[[22,21],[50,12],[78,21]],4:[[17,34],[34,13],[66,13],[83,34]],5:[[10,31],[29,15],[50,12],[71,15],[90,31]]};
+const positions={1:[[50,18]],2:[[29,18],[71,18]],3:[[17,35],[50,17],[83,35]],4:[[13,39],[34,17],[66,17],[87,39]],5:[[11,39],[30,18],[50,15],[70,18],[89,39]]};
 function tile(v,back=false,attrs=''){return `<button class="tile ${back?'back':''}" ${back?'':`data-v="${v}"`} ${attrs}>${back?'':v}</button>`}
 let audioCtx=null,lastEvent='',soundVol=.75;const volEl=$('volume');volEl.oninput=()=>soundVol=Number(volEl.value)/100;function tone(freq=550,len=.1,type='sine'){if(!soundVol)return;try{audioCtx??=new (window.AudioContext||window.webkitAudioContext)();audioCtx.resume();let o=audioCtx.createOscillator(),gain=audioCtx.createGain();o.type=type;o.frequency.value=freq;gain.gain.value=Math.min(.16,soundVol*.17);o.connect(gain);gain.connect(audioCtx.destination);o.start();gain.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+len);o.stop(audioCtx.currentTime+len)}catch{}}
 function updateFX(g){if(!g?.event)return;let e=g.event,k=e.kind+':'+e.at;if(k===lastEvent)return;lastEvent=k;let el=$('fx');if(e.kind==='trio'||e.kind==='win'){el.textContent=e.kind==='win'?'🏆 ¡GANADOR DE TRYMATCH! 🎉':'✨ ¡TRÍO CONSEGUIDO! ✨';el.classList.remove('hidden');el.classList.toggle('win',e.kind==='win');[600,800,1000].forEach((n,i)=>setTimeout(()=>tone(n,.22),i*170));setTimeout(()=>el.classList.add('hidden'),e.kind==='win'?3000:1300)}else if(e.kind==='swap')tone(740,.13)}
